@@ -3,12 +3,12 @@
 
 #include "code.h"
  
-void findpath (uint32_t** prices,uint32_t total, uint32_t* mejorsuma, uint32_t* mejorsecuencia){
+void findpath (int** prices,int total, int* mejorsuma, int* mejorsecuencia){
     
-    uint32_t * camino = calloc(total, sizeof(uint32_t));
-    uint32_t * visited = calloc(total, sizeof(uint32_t));
+    int * camino = calloc(total, sizeof(int));
+    int * visited = calloc(total, sizeof(int));
 
-    for (uint32_t nodeindex = 0; nodeindex < total; nodeindex +=1){
+    for (int nodeindex = 0; nodeindex < total; nodeindex +=1){
         printf("INICIANDO %d\n", nodeindex);
 
         move(camino, 0, nodeindex, 0, total, visited, prices, mejorsecuencia, mejorsuma);
@@ -16,13 +16,13 @@ void findpath (uint32_t** prices,uint32_t total, uint32_t* mejorsuma, uint32_t* 
 
 }
 
-void move(uint32_t* camino, uint32_t paso, uint32_t position, uint32_t costo, uint32_t total, uint32_t* visited, uint32_t** prices, uint32_t* mejorsecuencia, uint32_t* mejorsuma){
+void move(int* camino, int paso, int position, int costo, int total, int* visited, int** prices, int* mejorsecuencia, int* mejorsuma){
 
     visited[position] = 1;
     camino[paso] = position;
 
-    uint32_t suma = 0;
-    for (uint32_t i=0; i<total; i++){
+    int suma = 0;
+    for (int i=0; i<total; i++){
         suma += visited[i];
     }
     //printf("suma = %d\n", suma);
@@ -35,7 +35,7 @@ void move(uint32_t* camino, uint32_t paso, uint32_t position, uint32_t costo, ui
             printf("valor = %d\n", costo);
 
             *mejorsuma = costo;
-            for (uint32_t i=0; i<total; i+=1){
+            for (int i=0; i<total; i+=1){
                 mejorsecuencia[i] = camino[i];
                 printf("nodo %c|", lista[camino[i]]);
 
@@ -47,10 +47,10 @@ void move(uint32_t* camino, uint32_t paso, uint32_t position, uint32_t costo, ui
         return;
     }
     // Osino no he completado el camino
-    for (uint32_t i=0; i<total; i++){
+    for (int i=0; i<total; i++){
         // Si era una opción válida 
         if((prices[position][i] > 0) && (visited[i] == 0)){
-            printf("COSTO ES %d\n", prices[position][i]);
+            //printf("COSTO ES %d\n", prices[position][i]);
 
             // Guardo en el camino la secuencia con este nodo agregado (nodo 0=A)
             camino[paso] = position;
@@ -63,10 +63,10 @@ void move(uint32_t* camino, uint32_t paso, uint32_t position, uint32_t costo, ui
 }
 int main()
 {
-    uint32_t total = 7;
-    uint32_t* fila = calloc(7, sizeof(uint32_t));
-    uint32_t** matrix = calloc(7, sizeof(uint32_t*));
-    uint32_t* fila1 = calloc(7, sizeof(uint32_t*));
+    int total = 7;
+    int* fila = calloc(7, sizeof(int));
+    int** matrix = calloc(7, sizeof(int*));
+    int* fila1 = calloc(7, sizeof(int*));
     fila1[0]=0;
     fila1[1]=10;
     fila1[2]=-1;
@@ -74,7 +74,7 @@ int main()
     fila1[4]=7;
     fila1[5]=-1;
     fila1[6]=-1;
-    uint32_t* fila2 = calloc(7, sizeof(uint32_t*));
+    int* fila2 = calloc(7, sizeof(int*));
     fila2[0]=10;
     fila2[1]=0;
     fila2[2]=12;
@@ -82,7 +82,7 @@ int main()
     fila2[4]=-1;
     fila2[5]=-1;
     fila2[6]=-1;
-    uint32_t* fila3 = calloc(7, sizeof(uint32_t*));
+    int* fila3 = calloc(7, sizeof(int*));
     fila3[0]=-1;
     fila3[1]=12;
     fila3[2]=0;
@@ -90,7 +90,7 @@ int main()
     fila3[4]=-1;
     fila3[5]=7;
     fila3[6]=5;
-    uint32_t* fila4 = calloc(7, sizeof(uint32_t*));
+    int* fila4 = calloc(7, sizeof(int*));
     fila4[0]=8;
     fila4[1]=7;
     fila4[2]=6;
@@ -98,7 +98,7 @@ int main()
     fila4[4]=9;
     fila4[5]=4;
     fila4[6]=-1;
-    uint32_t* fila5 = calloc(7, sizeof(uint32_t*));
+    int* fila5 = calloc(7, sizeof(int*));
     fila5[0]=7;
     fila5[1]=-1;
     fila5[2]=-1;
@@ -106,7 +106,7 @@ int main()
     fila5[4]=0;
     fila5[5]=-1;
     fila5[6]=-1;
-    uint32_t* fila6 = calloc(7, sizeof(uint32_t*));
+    int* fila6 = calloc(7, sizeof(int*));
     fila6[0]=-1;
     fila6[1]=-1;
     fila6[2]=7;
@@ -114,7 +114,7 @@ int main()
     fila6[4]=-1;
     fila6[5]=0;
     fila6[6]=3;
-    uint32_t* fila7 = calloc(7, sizeof(uint32_t*));
+    int* fila7 = calloc(7, sizeof(int*));
     fila7[0]=-1;
     fila7[1]=-1;
     fila7[2]=5;
@@ -131,7 +131,7 @@ int main()
     matrix[6]= fila7;
 
 
-//    uint32_t matrix[] = {{0,10,-1,8,7,-1,-1},
+//    int matrix[] = {{0,10,-1,8,7,-1,-1},
 //                     {10,0,12,7,-1,-1,-1},
 //                     {-1,12,0,6,-1,7,5},
 //                     {8,7,6,0,9,4,-1},
@@ -139,9 +139,9 @@ int main()
 //                     {-1,-1,7,4,-1,0,3},
 //                     {-1,-1,5,-1,1,3,0}};
 
-	uint32_t* mejorsuma = calloc(1, sizeof(uint32_t));
+	int* mejorsuma = calloc(1, sizeof(int));
     *mejorsuma = 1000000;
-    uint32_t* mejorsecuencia = calloc(total, sizeof(uint32_t));
+    int* mejorsecuencia = calloc(total, sizeof(int));
     findpath(matrix, total, mejorsuma, mejorsecuencia);
     printf("Best price is %d \n", *mejorsuma);
 	
