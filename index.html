@@ -12,7 +12,10 @@
             <div>
                 <h2>Ingrese las información de su gráfo para encontrar la ruta mínima entre todos los nodos</h2>
                 <input id="input-grafo" placeholder="Formato: A-B/2,A-C/3, ..."></input>
-                <button id="button-grafo";>Resolver</button>
+                <div>
+                    <button id="button-mostrargrafo";>Mostrar Grafo</button>
+                    <button id="button-grafo";>Resolver</button>
+                </div>
                 <div id="grafo"></div>
             </div> 
             <div>
@@ -20,6 +23,13 @@
             </div>
         </div>
         <script async="" type="module" src="script.js"></script>
+        <script
+            src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"
+        ></script>
         
     </body>
+
+    <body>
+    <div id="mynetwork"></div>
+  </body>
 </html>
