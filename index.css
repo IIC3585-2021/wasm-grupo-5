@@ -1,12 +1,24 @@
 .container {
     margin: 100px auto;
     width: 40%;
-    border: 3px solid #73AD21;
-    padding: 10px;
+    border: 3px solid lightblue;
+    padding: 10px 10px 35px 10px;
   }
 
 .title {
     text-align: center;
+}
+
+button {
+    background-color: lightcoral;
+    border: solid 2px lightcoral;
+    border-radius: 4px;
+
+}
+
+input {
+    border: solid 2px lightcoral;
+    border-radius: 4px;
 }
 
 #input-grafo {
@@ -17,8 +29,40 @@
 }
 
 #button-grafo {
-    width: 46%;
+    width: 20%;
     margin-left: 1%;
+}
+
+#origen {
+    width: 23%;
+    margin-right: 1%;
+
+}
+
+#destino {
+    width: 23%;
+    margin-right: 1%;
+
+}
+
+#distancia {
+    width: 23%;
+    margin-right: 1%;
+
+}
+
+#agregar-union {
+    width: 23%;
+
+}
+
+#resolve {
+    text-align: center;
+}
+
+#button-grafo {
+    width: 50%;
+
 }
 
 #button-mostrargrafo {
@@ -37,3 +81,4 @@
 #input-show {
     border: none;
 }
+
