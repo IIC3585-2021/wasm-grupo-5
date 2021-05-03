@@ -3,11 +3,9 @@
 
 #include "code.h"
  
-void findpath (int** prices,int total, int* mejorsuma, int* mejorsecuencia){
+void findpath (int** prices,int total, int* mejorsuma, int* mejorsecuencia, int* camino, int* visited){
     
-    int * camino = calloc(total, sizeof(int));
-    int * visited = calloc(total, sizeof(int));
-
+    printf("suma total es %d", total);
     for (int nodeindex = 0; nodeindex < total; nodeindex +=1){
         printf("INICIANDO %d\n", nodeindex);
 
@@ -25,7 +23,7 @@ void move(int* camino, int paso, int position, int costo, int total, int* visite
     for (int i=0; i<total; i++){
         suma += visited[i];
     }
-    //printf("suma = %d\n", suma);
+    printf("suma = %d\n", suma);
 
     if (suma == total){
         // Lo meto a mejor opcion hasta el minuto si es mejor que la guardada
@@ -49,6 +47,7 @@ void move(int* camino, int paso, int position, int costo, int total, int* visite
     // Osino no he completado el camino
     for (int i=0; i<total; i++){
         // Si era una opción válida 
+        // printf("suma = %d\n",prices[position][i] );
         if((prices[position][i] > 0) && (visited[i] == 0)){
             //printf("COSTO ES %d\n", prices[position][i]);
 
@@ -131,18 +130,12 @@ int main()
     matrix[6]= fila7;
 
 
-//    int matrix[] = {{0,10,-1,8,7,-1,-1},
-//                     {10,0,12,7,-1,-1,-1},
-//                     {-1,12,0,6,-1,7,5},
-//                     {8,7,6,0,9,4,-1},
-//                     {7,-1,-1,9,0,-1,1},
-//                     {-1,-1,7,4,-1,0,3},
-//                     {-1,-1,5,-1,1,3,0}};
-
 	int* mejorsuma = calloc(1, sizeof(int));
     *mejorsuma = 1000000;
     int* mejorsecuencia = calloc(total, sizeof(int));
-    findpath(matrix, total, mejorsuma, mejorsecuencia);
+    int * camino = calloc(total, sizeof(int));
+    int * visited = calloc(total, sizeof(int));
+    findpath(matrix, total, mejorsuma, mejorsecuencia, camino, visited);
     printf("Best price is %d \n", *mejorsuma);
 	
 	return 0;
