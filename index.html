@@ -6,21 +6,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="title">
-                <h1>Vendedor Viajero</h1>
-            </div>
-            <div>
-                <h2>Ingrese las información de su gráfo para encontrar la ruta mínima entre todos los nodos</h2>
-                <input id="input-grafo" placeholder="Formato: A-B/2,A-C/3, ..."></input>
-                <div>
-                    <button id="button-mostrargrafo";>Mostrar Grafo</button>
-                    <button id="button-grafo";>Resolver</button>
+            <div class="lala">
+                <div class="title">
+                    <h1>Vendedor Viajero</h1>
                 </div>
-                <div id="grafo"></div>
-            </div> 
-            <div>
-                <h3 id="input-show"></h3>
-            </div>
+                <div>
+                    <h2>Ingrese las informacion de su grafo para encontrar la ruta minima entre todos los nodos</h2>
+                    <input id='origen' placeholder="nodo 1"><input id='destino' placeholder="nodo 2"><input id="distancia" placeholder="costo"><button id="agregar-union">Agregar</button>
+                    <h3 id="input-show"></h3>
+                    
+                </div> 
+                <div id="resolve">
+                    <div id="grafo"></div>
+                    <button id="button-grafo";>Resolver</button>
+                    <button id="button-mostrargrafo";>Mostrar Grafo</button>
+                </div>
+            </div>    
         </div>
         <script async="" type="module" src="script.js"></script>
         <script
