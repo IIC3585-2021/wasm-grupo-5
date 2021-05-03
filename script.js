@@ -25,7 +25,7 @@ const getCost = (myModule, ptr) => {
 }
 
 function buildMatrix() {
-    let inputValue = document.getElementById("input-grafo").value;
+    let inputValue = document.getElementById('input-show').innerHTML;
     var meanWhile = inputValue.split(",").map(item => item.split("/").map(item2 => item2.split("-")));
     var dict = {}
 
@@ -71,6 +71,26 @@ function buildMatrix() {
     }
     return [origenes,matriz];
 };
+
+let inputListo = "";
+let addBtn  = document.getElementById('agregar-union');
+addBtn.onclick = () => {
+    let pormientas = "";
+    let origen = document.getElementById('origen').value;
+    let destino = document.getElementById('destino').value;
+    let distancia = document.getElementById('distancia').value;
+    if (inputListo.length > 0) {
+        pormientas += ","+origen+"-"+destino+"/"+distancia;
+    }
+    else {
+        pormientas += origen+"-"+destino+"/"+distancia;
+    }
+    document.getElementById('origen').value = '';
+    document.getElementById('destino').value = '';
+    document.getElementById('distancia').value = '';
+    inputListo += pormientas;
+    document.getElementById('input-show').innerHTML = inputListo;
+}
 
 
 Module().then(function (mymod) {
