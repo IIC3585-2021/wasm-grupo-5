@@ -106,7 +106,7 @@ function showGraph(m, origenes, n, color) {
     let lista_edges = [];
     for (let i = 0; i < n; i++) {
         for (let j = 0; j < n; j++) {
-            if (matrix[i][j]) {
+            if (matrix[i][j] && matrix[i][j]>=0) {
                 matrix[j][i] = NaN;
                 if (color[i][j]===true || color[j][i]===true) {
                     lista_edges.push({from: i, to: j, label: `${matrix[i][j]}`, color: 'red'})
